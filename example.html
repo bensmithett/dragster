@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Dragster</title>
+
+    <style>
+      .dropzone {
+        background: goldenrod;
+        padding: 20px 0;
+        width: 400px;
+      }
+
+      .child {
+        background: lavender;
+        height: 100px;
+        width: 400px;
+        padding: 20px 0;
+      }
+
+      .grandchild {
+        background: red;
+        height: 100px;
+        width: 400px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="dropzone" class="dropzone">
+      <div class="child">
+        <div class="grandchild"></div>
+      </div>
+    </div>
+
+    <div id="dropzone2" class="dropzone">
+      <div class="child">
+        <div class="grandchild"></div>
+      </div>
+    </div>
+
+    <script src="lib/dragster.js"></script>
+    <script>
+      dragster = new Dragster( document.getElementById( "dropzone") );
+      dragster2 = new Dragster( document.getElementById( "dropzone2") );
+
+      document.addEventListener( "dragster:enter", function (e) {
+        console.log( "entered " + e.target.id );
+      }, false );
+
+      document.addEventListener( "dragster:leave", function (e) {
+        console.log( "left " + e.target.id );
+      }, false );
+    </script>
+  </body>
+</html>
