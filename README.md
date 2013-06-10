@@ -1,7 +1,7 @@
 # Dragster
-HTML5 `dragenter` and `dragleave` events [are crap](http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html).
+HTML5 `dragenter` and `dragleave` events [are crap](http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html). Detecting drag hover events on dropzone elements with children is a PITA that involves placeholder overlay elements, doing stuff every 350ms on `dragover`, or [this](http://stackoverflow.com/a/10906204/91934).
 
-Dragster gives you brand new `dragster:enter` and `dragster:leave` events that behave just like `mouseenter` and `mouseleave`. 
+Dragster gives you sane new `dragster:enter` and `dragster:leave` events that behave just like `mouseenter` and `mouseleave`. 
 
 ## Setup
 
