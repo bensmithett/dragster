@@ -30,5 +30,9 @@ document.addEventListener( "dragster:leave", function (e) {
 }, false );
 ```
 
+## Todo
+- Cross browser testing. So far only tested in Chrome.
+- Make it a Bower component.
+
 ## License
 Dragster is released under the [MIT License](http://ben.mit-license.org/)
