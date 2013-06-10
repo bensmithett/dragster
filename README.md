@@ -30,6 +30,15 @@ document.addEventListener( "dragster:leave", function (e) {
 }, false );
 ```
 
+Call the `removeListeners` method to teardown a Dragster instance.
+
+```javascript
+dragster = new Dragster( dropzone );
+// Dragster events are emitted.
+dragster.removeListeners();
+// Dragster events no longer emitted.
+```
+
 ## Todo
 - Cross browser testing. So far only tested in Chrome.
 - Make it a Bower component.

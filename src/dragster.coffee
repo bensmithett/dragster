@@ -22,6 +22,10 @@ class Dragster
     if !@first && !@second
       @el.dispatchEvent @dragsterLeaveEvent
 
+  removeListeners: ->
+    @el.removeEventListener "dragenter", @dragenter, false
+    @el.removeEventListener "dragleave", @dragleave, false
+
   dragsterEnterEvent: new Event 'dragster:enter', { bubbles: true, cancelable: true }
   dragsterLeaveEvent: new Event 'dragster:leave', { bubbles: true, cancelable: true }
 
