@@ -38,8 +38,12 @@ dragster.removeListeners();
 ```
 
 ## Todo
-- Cross browser testing. So far only tested in Chrome.
+- Cross browser testing.
+  - Works in latest stable Chrome, Firefox & Safari
+  - Doesn't work in Opera (will fix)
+  - Doesn't work in IE (any). IE [doesn't support](http://www.2ality.com/2013/06/triggering-events.html) DOM event constructors. Still deciding whether to require jQuery so I can just use `trigger`, bring that logic into Dragster or ignore IE completely.
 - Make it a Bower component.
+- Make it an AMD module.
 
 ## License
 Dragster is released under the [MIT License](http://ben.mit-license.org/)
