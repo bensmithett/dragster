@@ -7,6 +7,8 @@ Dragster gives you sane new `dragster:enter` and `dragster:leave` events that be
 
 It's tiny (1k-ish) and unobtrusive - all it does is add a couple of event listeners for `dragenter` and `dragleave` on the elements that you specify. It doesn't do anything automagically, and doesn't cancel the original events.
 
+Dragster works in latest stable Chrome, Firefox, Safari & Opera.
+
 ## Setup
 
 Just include Dragster in your app, then bootstrap your dropzone elements with Dragster so they can start emitting `dragster:` events. 
@@ -38,12 +40,9 @@ dragster.removeListeners();
 ```
 
 ## Todo
-- Cross browser testing.
-  - Works in latest stable Chrome, Firefox & Safari
-  - Doesn't work in Opera (will fix)
-  - Doesn't work in IE (any). IE [doesn't support](http://www.2ality.com/2013/06/triggering-events.html) DOM event constructors. Still deciding whether to require jQuery so I can just use `trigger`, bring that logic into Dragster or ignore IE completely.
-- Make it a Bower component.
-- Make it an AMD module.
+Currently throws errors in IE because IE [doesn't support](http://www.2ality.com/2013/06/triggering-events.html) DOM event constructors.
+
+I'm not going to try very hard to get these events firing in IE (graceful degradation ftw!) but I'll definitely throw a bit of feature detection in to stop it from erroring.
 
 ## License
 Dragster is released under the [MIT License](http://ben.mit-license.org/)
