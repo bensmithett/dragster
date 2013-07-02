@@ -1,0 +1,10 @@
+{
+  "name": "dragster",
+  "version": "0.0.0",
+  "main": "lib/dragster.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}
