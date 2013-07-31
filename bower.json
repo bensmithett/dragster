@@ -1,10 +1,11 @@
 {
   "name": "dragster",
-  "version": "0.0.1-alpha",
+  "version": "0.0.2-alpha",
   "main": "lib/dragster.js",
   "ignore": [
-    "**/.*",
-    "node_modules",
-    "components"
+    "src",
+    "*.json",
+    "*.md",
+    "*.html"
   ]
 }
