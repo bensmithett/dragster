@@ -1,13 +1,11 @@
 # Dragster
-HTML5 `dragenter` and `dragleave` events [are crap](http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html). 
+HTML5 `dragenter` and `dragleave` events [are crap](http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html). Dragster gives you sane new `dragster:enter` and `dragster:leave` events that behave just like `mouseenter` and `mouseleave`.
 
-Detecting when the user has dragged over a dropzone with child elements sucks. It usually involves transparent overlay elements or hooking into the constantly-firing `dragover` event.
+Detecting when the user has dragged over a dropzone with child elements sucks. It usually involves transparent overlay elements or listening to the constantly-firing `dragover` event.
 
 You [can set](http://stackoverflow.com/a/14027995/91934) `pointer-events: none` on child elements, but you might want to keep some events around. For example your dropzone may have a "Choose file" button in the middle that you want to give `:hover` styles or `click` event handlers.
 
-Dragster gives you sane new `dragster:enter` and `dragster:leave` events that behave just like `mouseenter` and `mouseleave`.
-
-It's tiny (1k-ish) and unobtrusive - all it does is add a couple of event listeners for `dragenter` and `dragleave` on the elements that you specify. It doesn't do anything automagically, and doesn't cancel the original events.
+Dragster is tiny (417 bytes minified & gzipped), unobtrusive & doesn't do much - it just add a couple of event listeners for `dragenter` and `dragleave` on the elements that you specify. It never does anything automagically, and doesn't cancel the original events.
 
 Dragster works in latest stable Chrome, Firefox, Safari & Opera. It does nothing at all in IE 7-10 (IE [doesn't support DOM event constructors](http://www.2ality.com/2013/06/triggering-events.html)).
 
