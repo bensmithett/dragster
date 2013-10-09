@@ -7,6 +7,9 @@ class Dragster
       @el.addEventListener "dragenter", @dragenter, false
       @el.addEventListener "dragleave", @dragleave, false
 
+      @dragsterEnterEvent = new CustomEvent 'dragster:enter', { bubbles: true, cancelable: true }
+      @dragsterLeaveEvent = new CustomEvent 'dragster:leave', { bubbles: true, cancelable: true }
+
   dragenter: ( event ) =>
     if @first
       @second = true
@@ -31,7 +34,5 @@ class Dragster
     try new CustomEvent("z") catch then return false
     return true
 
-  dragsterEnterEvent: new CustomEvent 'dragster:enter', { bubbles: true, cancelable: true }
-  dragsterLeaveEvent: new CustomEvent 'dragster:leave', { bubbles: true, cancelable: true }
 
 window.Dragster = Dragster

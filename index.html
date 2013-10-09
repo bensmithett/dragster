@@ -31,15 +31,9 @@
   </head>
 
   <body>
-    <p>These dropzones have no Dragster awesomeness. Try dragging Bill Murray and see how sucky it is!</p>
+    <p>This dropzone has no Dragster awesomeness. Try dragging Bill Murray and see how sucky it is!</p>
 
     <div id="dropzone-crap-1" class="dropzone">
-      <div class="child">
-        <div class="grandchild"></div>
-      </div>
-    </div>
-
-    <div id="dropzone-crap-2" class="dropzone">
       <div class="child">
         <div class="grandchild"></div>
       </div>
@@ -69,8 +63,8 @@
         e.target.classList.add("is-over");
       }, false );
 
-      document.getElementById( "dropzone-crap-2" ).addEventListener( "dragleave", function (e) {
-        console.log( "left " + e.target.id );
+      document.getElementById( "dropzone-crap-1" ).addEventListener( "dragleave", function (e) {
+        console.log( "left " + e.target.id + "(" + e.target.className + ")" );
         e.target.classList.remove("is-over");
       }, false );
 
@@ -79,12 +73,12 @@
       new Dragster( document.getElementById( "dropzone-good-2") );
 
       document.addEventListener( "dragster:enter", function (e) {
-        console.log( "entered " + e.target.id );
+        console.log( "entered " + e.target.id + "(" + e.target.className + ")" );
         e.target.classList.add("is-over");
       }, false );
 
       document.addEventListener( "dragster:leave", function (e) {
-        console.log( "left " + e.target.id );
+        console.log( "left " + e.target.id + "(" + e.target.className + ")" );
         e.target.classList.remove("is-over");
       }, false );
     </script>
