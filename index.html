@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Dragster</title>
+
+    <style>
+      .dropzone {
+        background: goldenrod;
+        display: inline-block;
+        padding: 20px 0;
+        width: 400px;
+      }
+
+      .dropzone.is-over {
+        background: green;
+      }
+
+      .child {
+        background: lavender;
+        height: 100px;
+        width: 400px;
+        padding: 20px 0;
+      }
+
+      .grandchild {
+        background: red;
+        height: 100px;
+        width: 400px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>These dropzones have no Dragster awesomeness. Try dragging Bill Murray and see how sucky it is!</p>
+
+    <div id="dropzone-crap-1" class="dropzone">
+      <div class="child">
+        <div class="grandchild"></div>
+      </div>
+    </div>
+
+    <div id="dropzone-crap-2" class="dropzone">
+      <div class="child">
+        <div class="grandchild"></div>
+      </div>
+    </div>
+
+    <p><img src="http://www.fillmurray.com/200/300" alt="" /></p>
+
+    <p>These dropzones have Dragster! Drag Bill Murray to see the awesomeness!</p>
+
+    <div id="dropzone-good-1" class="dropzone">
+      <div class="child">
+        <div class="grandchild"></div>
+      </div>
+    </div>
+
+    <div id="dropzone-good-2" class="dropzone">
+      <div class="child">
+        <div class="grandchild"></div>
+      </div>
+    </div>
+
+    <script src="lib/dragster.js"></script>
+    <script>
+      // Add some listeners for crappy HTML5 events to non-Dragster dropzones
+      document.getElementById( "dropzone-crap-1" ).addEventListener( "dragenter", function (e) {
+        console.log( "entered " + e.target.id );
+        e.target.classList.add("is-over");
+      }, false );
+
+      document.getElementById( "dropzone-crap-2" ).addEventListener( "dragleave", function (e) {
+        console.log( "left " + e.target.id );
+        e.target.classList.remove("is-over");
+      }, false );
+
+      // Dragsterize some dropzones and add some event listeners
+      new Dragster( document.getElementById( "dropzone-good-1") );
+      new Dragster( document.getElementById( "dropzone-good-2") );
+
+      document.addEventListener( "dragster:enter", function (e) {
+        console.log( "entered " + e.target.id );
+        e.target.classList.add("is-over");
+      }, false );
+
+      document.addEventListener( "dragster:leave", function (e) {
+        console.log( "left " + e.target.id );
+        e.target.classList.remove("is-over");
+      }, false );
+    </script>
+  </body>
+</html>

@@ -1,10 +1,11 @@
 class Dragster
   constructor: ( @el ) ->
-    @first = false
-    @second = false
+    if @supportsEventConstructors()
+      @first = false
+      @second = false
 
-    @el.addEventListener "dragenter", @dragenter, false
-    @el.addEventListener "dragleave", @dragleave, false
+      @el.addEventListener "dragenter", @dragenter, false
+      @el.addEventListener "dragleave", @dragleave, false
 
   dragenter: ( event ) =>
     if @first
@@ -26,7 +27,11 @@ class Dragster
     @el.removeEventListener "dragenter", @dragenter, false
     @el.removeEventListener "dragleave", @dragleave, false
 
-  dragsterEnterEvent: new Event 'dragster:enter', { bubbles: true, cancelable: true }
-  dragsterLeaveEvent: new Event 'dragster:leave', { bubbles: true, cancelable: true }
+  supportsEventConstructors: ->
+    try new CustomEvent("z") catch then return false
+    return true
+
+  dragsterEnterEvent: new CustomEvent 'dragster:enter', { bubbles: true, cancelable: true }
+  dragsterLeaveEvent: new CustomEvent 'dragster:leave', { bubbles: true, cancelable: true }
 
 window.Dragster = Dragster
