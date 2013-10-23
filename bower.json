@@ -3,9 +3,11 @@
   "version": "0.0.2-alpha",
   "main": "lib/dragster.js",
   "ignore": [
+    "demo_assets",
     "src",
     "*.json",
     "*.md",
-    "*.html"
+    "*.html",
+    "*.ico"
   ]
 }

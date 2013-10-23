@@ -1,86 +1,244 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html class="no-js">
   <head>
-    <title>Dragster</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dragster: Better HTML5 drag events</title>
+    <meta name="description" content="HTML5 drag events suck. Dragster fixes them.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style>
-      .dropzone {
-        background: goldenrod;
+      /* Base */
+      * {
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        -o-mox-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-family: sans-serif;
+        height: 100%;
+      }
+
+      body {
+        background-color: #eee;
+        color: #222;
+        font-size: 16px;
+        height: 100%;
+        line-height: 1.5em;
+        margin: 0;
+        min-width: 768px;
+      }
+
+      p {
+        margin: 0 0 1em;
+      }
+
+      a {
+        color: #ff4844;
+      }
+
+      /* Modules */
+      .demo {
+        border-bottom: 1px solid #ddd;
+        overflow: hidden;
+        padding: 60px;
+        position: relative;
+      }
+
+      .download,
+      .footer {
+        border-bottom: 1px solid #ddd;
+        padding: 60px;
+        text-align: center;
+      }
+
+      .download code {
+        background: #161719;
+        border-radius: 5px;
+        color: #fff;
         display: inline-block;
-        padding: 20px 0;
-        width: 400px;
+        padding: 10px;
       }
 
+      .draggable {
+        background: #ddd;
+        border-radius: 5px;
+        box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        cursor: move;
+        margin: 0 auto 20px;
+        padding: 40px 0;
+        text-align: center;
+        width: 20%;
+      }
+
+      .draggable.is-dragging {
+        color: #ff4844;
+      }
+
+      .dropzone {
+        background: #fcfcfc;
+        border: 1px solid #e3e3e3;
+        float: left;
+        padding: 30px;
+        text-align: center;
+        width: 35%;
+      }
+      .dropzone:nth-child(2n) {
+        float: right;
+      }
       .dropzone.is-over {
-        background: green;
+        background: #d6ebce;
+      }
+      .dropzone__title {
+        margin: 0 0 20px;
       }
 
-      .child {
-        background: lavender;
-        height: 100px;
-        width: 400px;
-        padding: 20px 0;
+      .header {
+        border-bottom: 1px solid #ddd;
+        padding: 60px 0;
       }
 
-      .grandchild {
-        background: red;
-        height: 100px;
-        width: 400px;
+      .logo {
+        margin: 0 auto 20px;
+      }
+      .logo img {
+        display: block;
+        margin: 0 auto;
+        width: 300px;
+      }
+
+      .results {
+        height: 200px;
+        margin: 0 auto;
+        overflow: hidden;
+        width: 20%;
+      }
+      .results__events > code {
+        display: block;
+        font-size: 0.75em;
+        position: relative;
+      }
+      .results__events > code:first-child {
+        font-weight: bold;
+      }
+
+      .slogan {
+        color: #696B73;
+        text-align: center;
       }
     </style>
   </head>
-
   <body>
-    <p>This dropzone has no Dragster awesomeness. Try dragging Bill Murray and see how sucky it is!</p>
+    <header class="header">
+      <h1 class="logo">
+        <img src="/demo_assets/logo.svg" alt="Dragster" />
+      </h1>
 
-    <div id="dropzone-crap-1" class="dropzone">
-      <div class="child">
-        <div class="grandchild"></div>
+      <p class="slogan">
+        HTML5 dragenter &amp; dragleave events suck. Dragster fixes them.
+      </p>
+    </header>
+    <section class="demo">
+      <div class="dropzone" id="dropzone-crap">
+        <h2 class="dropzone__title">No Dragster</h2>
+        <p>This is a complex dropzone with child elements.</p>
+        <p><small>You might have hints telling your users to</small></p>
+        <p><strong>Drop a file here!</strong></p>
+        <p><small>or a backup file input:</small></p>
+        <p><input type="file" placeholder="Choose a file"></p>
       </div>
-    </div>
 
-    <p><img src="http://www.fillmurray.com/200/300" alt="" /></p>
 
-    <p>These dropzones have Dragster! Drag Bill Murray to see the awesomeness!</p>
-
-    <div id="dropzone-good-1" class="dropzone">
-      <div class="child">
-        <div class="grandchild"></div>
+      <div class="dropzone" id="dropzone-good">
+        <h2 class="dropzone__title">Dragster!</h2>
+        <p>This is a complex dropzone with child elements.</p>
+        <p><small>You might have hints telling your users to</small></p>
+        <p><strong>Drop a file here!</strong></p>
+        <p><small>or a backup file input:</small></p>
+        <p><input type="file" placeholder="Choose a file"></p>
       </div>
-    </div>
 
-    <div id="dropzone-good-2" class="dropzone">
-      <div class="child">
-        <div class="grandchild"></div>
+      <div class="draggable" id="draggable" draggable="true">
+        <strong>Drag me!</strong>
       </div>
-    </div>
+
+      <div class="results">
+        <strong>Events fired:</strong>
+        <div class="results__events" id="events">
+          <small>Do some dragging to see events&hellip;</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="download">
+      <p>
+        <code>bower install dragster</code>
+      </p>
+
+      <p>or</p>
+
+      <a href="https://github.com/bensmithett/dragster">Download &amp; docs on GitHub</a>
+    </section>
+
+    <section class="footer">
+      Made on an ageing couch by <a href="http://bensmithett.com">Ben Smithett</a>.
+      Design by <a href="http://damir.com.au/">Damir Kotorić</a>.
+    </section>
 
     <script src="lib/dragster.js"></script>
     <script>
-      // Add some listeners for crappy HTML5 events to non-Dragster dropzones
-      document.getElementById( "dropzone-crap-1" ).addEventListener( "dragenter", function (e) {
-        console.log( "entered " + e.target.id );
+      var events = document.getElementById( "events" );
+
+      // Dragsterize one of the dropzones
+      new Dragster( document.getElementById( "dropzone-good") );
+
+      // Add some listeners for crappy HTML5 events to non-Dragster dropzone
+      document.getElementById( "dropzone-crap" ).addEventListener( "dragenter", function (e) {
+        events.innerHTML = "<code style='padding-left: " + offset() + "px;'>dragenter</code>" + events.innerHTML;
+      }, false );
+
+      document.getElementById( "dropzone-crap" ).addEventListener( "dragleave", function (e) {
+        events.innerHTML = "<code style='padding-left: " + offset() + "px;'>dragleave</code>" + events.innerHTML;
+      }, false );
+
+      // Add listeners for Dragster events to the good dropzone
+      document.getElementById( "dropzone-good" ).addEventListener( "dragster:enter", function (e) {
+        events.innerHTML = "<code style='padding-left: " + offset() + "px;'>dragster:enter</code>" + events.innerHTML;
         e.target.classList.add("is-over");
       }, false );
 
-      document.getElementById( "dropzone-crap-1" ).addEventListener( "dragleave", function (e) {
-        console.log( "left " + e.target.id + "(" + e.target.className + ")" );
+      document.getElementById( "dropzone-good" ).addEventListener( "dragster:leave", function (e) {
+        events.innerHTML = "<code style='padding-left: " + offset() + "px;'>dragster:leave</code>" + events.innerHTML;
         e.target.classList.remove("is-over");
       }, false );
 
-      // Dragsterize some dropzones and add some event listeners
-      new Dragster( document.getElementById( "dropzone-good-1") );
-      new Dragster( document.getElementById( "dropzone-good-2") );
 
-      document.addEventListener( "dragster:enter", function (e) {
-        console.log( "entered " + e.target.id + "(" + e.target.className + ")" );
-        e.target.classList.add("is-over");
+      // Extra demo stuff
+      function offset () {
+        return Math.round(Math.random() * 30);
+      };
+
+      document.getElementById("draggable").addEventListener( "dragstart", function (e) {
+        e.dataTransfer.setData('text/plain', '')
+        e.target.classList.add("is-dragging");
       }, false );
 
-      document.addEventListener( "dragster:leave", function (e) {
-        console.log( "left " + e.target.id + "(" + e.target.className + ")" );
-        e.target.classList.remove("is-over");
+      document.getElementById("draggable").addEventListener( "dragend", function (e) {
+        e.target.classList.remove("is-dragging");
       }, false );
+    </script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-17358351-5', 'bensmithett.github.io');
+      ga('send', 'pageview');
     </script>
   </body>
 </html>
