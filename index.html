@@ -48,8 +48,7 @@
         position: relative;
       }
 
-      .download,
-      .footer {
+      .download {
         border-bottom: 1px solid #ddd;
         padding: 60px;
         text-align: center;
@@ -89,11 +88,14 @@
       .dropzone:nth-child(2n) {
         float: right;
       }
-      .dropzone.is-over {
-        background: #d6ebce;
-      }
+      
       .dropzone__title {
         margin: 0 0 20px;
+      }
+
+      .footer {
+        padding: 60px;
+        text-align: center;
       }
 
       .header {
@@ -129,6 +131,11 @@
         color: #696B73;
         text-align: center;
       }
+
+      /* State */
+      .is-over {
+        background: #d6ebce !important;
+      }
     </style>
   </head>
   <body>
@@ -138,7 +145,7 @@
       </h1>
 
       <p class="slogan">
-        HTML5 dragenter &amp; dragleave events <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html)">suck</a>. Dragster fixes them.
+        HTML5 dragenter &amp; dragleave events <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html">suck</a>. Dragster fixes them.
       </p>
     </header>
     <section class="demo">
@@ -198,10 +205,12 @@
       // Add some listeners for crappy HTML5 events to non-Dragster dropzone
       document.getElementById( "dropzone-crap" ).addEventListener( "dragenter", function (e) {
         events.innerHTML = "<code style='padding-left: " + offset() + "px;'>dragenter</code>" + events.innerHTML;
+        e.target.classList.add("is-over");
       }, false );
 
       document.getElementById( "dropzone-crap" ).addEventListener( "dragleave", function (e) {
         events.innerHTML = "<code style='padding-left: " + offset() + "px;'>dragleave</code>" + events.innerHTML;
+        e.target.classList.remove("is-over");
       }, false );
 
       // Add listeners for Dragster events to the good dropzone
