@@ -1,4 +1,6 @@
 # Dragster
+:sparkles::sparkles:**[Demo](http://bensmithett.github.io/dragster)**:sparkles::sparkles:
+
 HTML5 `dragenter` and `dragleave` events [are crap](http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html). Dragster gives you sane new `dragster:enter` and `dragster:leave` events that behave just like `mouseenter` and `mouseleave`.
 
 Detecting when the user has dragged over a dropzone with child elements sucks. It usually involves transparent overlay elements, listening to the constantly-firing `dragover` event or nuking every other event with `pointer-events: none`.
