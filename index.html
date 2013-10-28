@@ -77,7 +77,8 @@
         color: #ff4844;
       }
 
-      .dropzone {
+      .dropzone,
+      .dropzone--dragster {
         background: #fcfcfc;
         border: 1px solid #e3e3e3;
         float: left;
@@ -85,7 +86,7 @@
         text-align: center;
         width: 35%;
       }
-      .dropzone:nth-child(2n) {
+      .dropzone--dragster {
         float: right;
       }
       
@@ -104,7 +105,7 @@
       }
 
       .logo {
-        margin: 0 auto 20px;
+        margin: 0 auto 1.5em;
       }
       .logo img {
         display: block;
@@ -129,7 +130,28 @@
 
       .slogan {
         color: #696B73;
+        margin: 0 auto 1em;
+        max-width: 750px;
         text-align: center;
+      }
+
+      .slogan:first-of-type {
+        margin: 0 auto 2em;
+      }
+
+      .slogan:last-child {
+        margin-bottom: 0;
+      }
+
+      .slogan > code {
+        background: #161719;
+        border-radius: 5px;
+        color: #fff;
+        display: inline-block;
+        font-size: 14px;
+        line-height: 17px;
+        margin: 0 2px;
+        padding: 2px 5px;
       }
 
       /* State */
@@ -145,10 +167,18 @@
       </h1>
 
       <p class="slogan">
-        HTML5 dragenter &amp; dragleave events <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html">suck</a>. Dragster fixes them.
+        HTML5 <code>dragenter</code> &amp; <code>dragleave</code> events <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html">suck</a>.
+      </p>
+
+      <p class="slogan">
+        Dragster fires custom events that behave more like <code>mouseenter</code> or <code>mouseleave</code> (or CSS's <code>:hover</code>) that make it easier to deal with complex dropzones with child elements.
       </p>
     </header>
     <section class="demo">
+      <p class="slogan">
+        Give it a try! The dropzone on the left is listening HTML5's events and the dropzone on the right is listening for Dragster's.
+      </p>
+
       <div class="dropzone" id="dropzone-crap">
         <h2 class="dropzone__title">No Dragster</h2>
         <p>This is a complex dropzone with child elements.</p>
@@ -159,7 +189,7 @@
       </div>
 
 
-      <div class="dropzone" id="dropzone-good">
+      <div class="dropzone--dragster" id="dropzone-good">
         <h2 class="dropzone__title">Dragster!</h2>
         <p>This is a complex dropzone with child elements.</p>
         <p><small>You might have hints telling your users to</small></p>
