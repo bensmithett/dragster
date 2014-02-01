@@ -31,7 +31,7 @@ class Dragster
     @el.removeEventListener "dragleave", @dragleave, false
 
   supportsEventConstructors: ->
-    try new CustomEvent("z") catch then return false
+    try new CustomEvent("z") catch e then return false
     return true
 
 
