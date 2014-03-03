@@ -9,6 +9,8 @@ Dragster is tiny (417 bytes minified & gzipped), unobtrusive & doesn't do much -
 
 Dragster works in latest stable Chrome, Firefox, Safari & Opera. It does nothing at all in IE 7-10 (IE [doesn't support DOM event constructors](http://www.2ality.com/2013/06/triggering-events.html)).
 
+@catmanjan maintains a [jQuery plugin version](https://github.com/catmanjan/jquery-dragster) of Dragster if you'd like better cross browser support.
+
 ## Setup
 
 Just include Dragster in your app, then bootstrap your dropzone elements with Dragster so they can start emitting `dragster:` events. 
