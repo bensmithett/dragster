@@ -1,6 +1,6 @@
 {
   "name": "dragster",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "lib/dragster.js",
   "ignore": [
     "demo_assets",

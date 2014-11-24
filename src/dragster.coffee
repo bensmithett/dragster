@@ -12,7 +12,7 @@ class Dragster
       @second = true
     else
       @first = true
-      @el.dispatchEvent new CustomEvent 'dragster:enter', 
+      @el.dispatchEvent new CustomEvent "dragster:enter", 
         bubbles: true
         cancelable: true
         detail: 
@@ -25,7 +25,7 @@ class Dragster
       @first = false
 
     if !@first && !@second
-      @el.dispatchEvent new CustomEvent 'dragster:leave', 
+      @el.dispatchEvent new CustomEvent "dragster:leave", 
         bubbles: true
         cancelable: true
         detail: 
@@ -43,6 +43,5 @@ class Dragster
   reset: ->
     @first = false
     @second = false
-
 
 window.Dragster = Dragster

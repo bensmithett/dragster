@@ -42,7 +42,12 @@ dragster.removeListeners();
 ```
 
 ## Contributing
-Dragster is written in [CoffeeScript](http://coffeescript.org/). To compile, [install CoffeeScript](http://coffeescript.org/#installation) then run `coffee -o lib/ -cw src/`.
+Dragster is written in [CoffeeScript](http://coffeescript.org/).
+
+```
+npm install
+npm run build
+```
 
 ## License
 Dragster is released under the [MIT License](http://ben.mit-license.org/)
