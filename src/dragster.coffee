@@ -1,22 +1,23 @@
 class Dragster
   constructor: ( @el ) ->
-    if @supportsEventConstructors()
-      @first = false
-      @second = false
+    @first = false
+    @second = false
 
-      @el.addEventListener "dragenter", @dragenter, false
-      @el.addEventListener "dragleave", @dragleave, false
+    @el.addEventListener "dragenter", @dragenter, false
+    @el.addEventListener "dragleave", @dragleave, false
 
   dragenter: ( event ) =>
     if @first
       @second = true
     else
       @first = true
-      @el.dispatchEvent new CustomEvent "dragster:enter", 
-        bubbles: true
-        cancelable: true
-        detail: 
-          dataTransfer: event.dataTransfer
+
+      @customEvent = document.createEvent "CustomEvent"
+      @customEvent.initCustomEvent "dragster:enter", true, true,
+        dataTransfer: event.dataTransfer,
+        sourceEvent: event
+
+      @el.dispatchEvent @customEvent
 
   dragleave: ( event ) =>
     if @second
@@ -25,19 +26,17 @@ class Dragster
       @first = false
 
     if !@first && !@second
-      @el.dispatchEvent new CustomEvent "dragster:leave", 
-        bubbles: true
-        cancelable: true
-        detail: 
-          dataTransfer: event.dataTransfer
+
+      @customEvent = document.createEvent "CustomEvent"
+      @customEvent.initCustomEvent "dragster:leave", true, true,
+        dataTransfer: event.dataTransfer,
+        sourceEvent: event
+
+      @el.dispatchEvent @customEvent
 
   removeListeners: ->
     @el.removeEventListener "dragenter", @dragenter, false
     @el.removeEventListener "dragleave", @dragleave, false
-
-  supportsEventConstructors: ->
-    try new CustomEvent("z") catch then return false
-    return true
 
   # Call after drop
   reset: ->
