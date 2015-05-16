@@ -44,4 +44,7 @@ class Dragster
     @first = false
     @second = false
 
-window.Dragster = Dragster
+if typeof module == 'undefined'
+  window.Dragster = Dragster
+else
+  module.exports = Dragster
