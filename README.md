@@ -1,3 +1,5 @@
+*I'm no longer actively maintaining Dragster. If you'd like to take over, let me know on [this issue](https://github.com/bensmithett/dragster/issues/13)*
+
 # Dragster
 :sparkles::sparkles:**[Demo](http://bensmithett.github.io/dragster)**:sparkles::sparkles:
 
