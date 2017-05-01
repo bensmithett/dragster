@@ -1,6 +1,8 @@
 *I'm no longer actively maintaining Dragster. If you'd like to take over, let me know on [this issue](https://github.com/bensmithett/dragster/issues/13)*
 
 # Dragster
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/bensmithett/dragster.svg)](https://greenkeeper.io/)
 :sparkles::sparkles:**[Demo](http://bensmithett.github.io/dragster)**:sparkles::sparkles:
 
 HTML5 `dragenter` and `dragleave` events [are crap](http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html). Dragster gives you sane new `dragster:enter` and `dragster:leave` events that behave just like `mouseenter` and `mouseleave`.
