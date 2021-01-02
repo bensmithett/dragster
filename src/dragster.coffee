@@ -5,6 +5,7 @@ class Dragster
 
     @el.addEventListener "dragenter", @dragenter, false
     @el.addEventListener "dragleave", @dragleave, false
+    @el.addEventListener "drop", @dragleave, false
 
   dragenter: ( event ) =>
     if @first
@@ -37,6 +38,7 @@ class Dragster
   removeListeners: ->
     @el.removeEventListener "dragenter", @dragenter, false
     @el.removeEventListener "dragleave", @dragleave, false
+    @el.removeEventListener "drop", @dragleave, false
 
   # Call after drop
   reset: ->
