@@ -1,22 +1,25 @@
 {
   "name": "dragster",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "Better HTML5 drag events",
-  "main": "lib/dragster.js",
-  "scripts": {
-    "build": "./node_modules/.bin/coffee -o lib/ -cw src/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bensmithett/dragster.git"
-  },
-  "author": "Ben Smithett",
   "license": "MIT",
+  "author": "Ben Smithett",
+  "keywords": ["html5 drag and drop", "dropzone", "dragenter", "dragleave", "draggable", "dnd"],
   "bugs": {
     "url": "https://github.com/bensmithett/dragster/issues"
   },
   "homepage": "https://github.com/bensmithett/dragster",
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=7"
+  },
+  "main": "dist/dragster.js",
+  "scripts": {
+    "build": "pnpm run build-modern && pnpm run build-es2015 && cp dist/dragster.js docs/",
+    "build-modern": "esbuild dragster.js --outfile=dist/dragster.js --target=chrome90,edge90,firefox90,ios15,safari15",
+    "build-es2015": "esbuild dragster.js --outfile=dist/dragster-es2015.js --target=es2015"
+  },
   "devDependencies": {
-    "coffee-script": "^1.8.0"
+    "esbuild": "^0.15.12"
   }
 }

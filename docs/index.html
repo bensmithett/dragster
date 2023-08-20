@@ -8,12 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style>
-      /* Base */
       * {
-        -moz-box-sizing: border-box;
-        -ms-box-sizing: border-box;
-        -o-mox-sizing: border-box;
-        -webkit-box-sizing: border-box;
         box-sizing: border-box;
       }
 
@@ -163,7 +158,7 @@
   <body>
     <header class="header">
       <h1 class="logo">
-        <img src="demo_assets/logo.svg" alt="Dragster" />
+        <img src="logo.svg" alt="Dragster" />
       </h1>
 
       <p class="slogan">
@@ -171,7 +166,7 @@
       </p>
 
       <p class="slogan">
-        Dragster fires custom events that behave more like <code>mouseenter</code> or <code>mouseleave</code> (or CSS's <code>:hover</code>) that make it easier to deal with complex dropzones with child elements.
+        Dragster fires custom events that behave more like <code>mouseenter</code> or <code>mouseleave</code> (or CSS <code>:hover</code>) that make it easier to deal with complex dropzones with child elements.
       </p>
     </header>
     <section class="demo">
@@ -212,21 +207,21 @@
 
     <section class="download">
       <p>
-        <code>bower install dragster</code>
+        <code>npm install dragster</code>
       </p>
 
-      <p>or</p>
-
-      <a href="https://github.com/bensmithett/dragster">Download &amp; docs on GitHub</a>
+      <p><a href="https://github.com/bensmithett/dragster">Source &amp; docs on GitHub</a></p>
     </section>
 
     <section class="footer">
-      Made on an ageing couch by <a href="http://bensmithett.com">Ben Smithett</a>.
-      Design by <a href="http://damir.com.au/">Damir Kotorić</a>.
+      Made on an ageing couch one night back in 2013 by <a href="http://bensmithett.com">Ben Smithett</a>.
+      <br />
+      The couch is gone. Somehow Dragster is still useful.
     </section>
 
-    <script src="lib/dragster.js"></script>
-    <script>
+    <script type="module">
+      import { Dragster } from './dragster.js'
+
       var events = document.getElementById( "events" );
 
       // Dragsterize one of the dropzones
